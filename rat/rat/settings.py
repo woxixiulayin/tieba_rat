@@ -13,7 +13,9 @@ BOT_NAME = 'rat'
 
 SPIDER_MODULES = ['rat.spiders']
 NEWSPIDER_MODULE = 'rat.spiders'
-
+ITEM_PIPELINES = {
+    'my_scrapy.pipelines.RatPipeline': 800,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'rat (+http://www.yourdomain.com)'

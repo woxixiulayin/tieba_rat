@@ -12,7 +12,7 @@ class Post_Item(scrapy.Item):
     url_link = scrapy.Field()
     rep_num = scrapy.Field()
     title = scrapy.Field()
-    first_time = scrapy.Field()
+    # first_time = scrapy.Field()
     last_time = scrapy.Field()
     author = scrapy.Field()
     body = scrapy.Field()
