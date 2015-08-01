@@ -9,7 +9,7 @@ tieba_preurl = "http://tieba.baidu.com/"
 def li2post(li):
 	li_obj = json.loads(li.get('data-field'))
 	post = Post()
-	post.id = li_obj['first_post_id']
+	post.id = li_obj['id']
 	post.author = li_obj['author_name']
 	post.rep_num = int(li_obj['reply_num'])
 	post.last_time = li.xpath('.//span[@class="threadlist_reply_date j_reply_data"]')[0].text.strip()
@@ -56,19 +56,14 @@ class Tieba_url(My_url):
 		session = DBsession()
 		for post in self.posts:
 			session.add(post)
-			print 1
+		session.commit()
 		session.close()
-
-class DB():
-	def findall(self,):
-		session = DBsession()
-		post = session.query(Post).filter().all()
-		session.close()
-
 
 url = "http://tieba.baidu.com/f?kw=%C3%C0%BE%E7"
 l = Tieba_url(url)
 l.get_li_need()
 l.save_posts()
-db = DB().findall()
+# print DB().findall()
+db = DB()
+print db.findall()
 # print post
